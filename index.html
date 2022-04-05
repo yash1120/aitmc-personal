@@ -9,94 +9,115 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script" />
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <style>.carousel {
-        margin: 30px auto 60px;
-        padding: 0 80px;
-    }
-    .carousel .item {
-        text-align: center;
-        overflow: hidden;
-    }
-    .carousel .item h4 {
-        font-family: 'Varela Round', sans-serif;
-    }
-    .carousel .item img {
-        max-width: 100%;
-        display: inline-block;
-    }
-    .carousel .item .btn {
-        border-radius: 0;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: bold;
-        border: none;
-        background: #a177ff;
-        padding: 6px 15px;
-        margin-top: 5px;
-    }
-    .carousel .item .btn:hover {
-        background: #8c5bff;
-    }
-    .carousel .item .btn i {
-        font-size: 14px;
-        font-weight: bold;
-        margin-left: 5px;
-    }
-    .carousel .thumb-wrapper {
-        margin: 5px;
-        text-align: left;
-        background: #fff;
-        box-shadow: 0px 2px 2px rgba(0,0,0,0.1);   
-    }
-    .carousel .thumb-content {
-        padding: 15px;
-        font-size: 13px;
-    }
-    .carousel .carousel-control {
-        height: 44px;
-        width: 44px;
-        background: none;	
-        margin: auto 0;
-        border-radius: 50%;
-        border: 3px solid rgba(0, 0, 0, 0.8);
-    }
-    .carousel .carousel-control i {
-        font-size: 36px;
-        position: absolute;
-        top: 50%;
-        display: inline-block;
-        margin: -19px 0 0 0;
-        z-index: 5;
-        left: 0;
-        right: 0;
-        color: rgba(0, 0, 0, 0.8);
-        text-shadow: none;
-        font-weight: bold;
-    }
-    .carousel .carousel-control.left i {
-        margin-left: -3px;
-    }
-    .carousel .carousel-control.right i {
-        margin-right: -3px;
-    }
-    .carousel .carousel-indicators {
-        bottom: -50px;
-    }
-    .carousel-indicators li, .carousel-indicators li.active {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin: 4px;
-        border-color: transparent;
-    }
-    .carousel-indicators li {	
-        background: #ababab;
-    }
-    .carousel-indicators li.active {	
-        background: #555;
-    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <style>
+        .carousel {
+            margin: 30px auto 60px;
+            padding: 0 80px;
+        }
+
+        .carousel .item {
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .carousel .item h4 {
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .carousel .item img {
+            max-width: 100%;
+            display: inline-block;
+        }
+
+        .carousel .item .btn {
+            border-radius: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            background: #a177ff;
+            padding: 6px 15px;
+            margin-top: 5px;
+        }
+
+        .carousel .item .btn:hover {
+            background: #8c5bff;
+        }
+
+        .carousel .item .btn i {
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .carousel .thumb-wrapper {
+            margin: 5px;
+            text-align: left;
+            background: #fff;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel .thumb-content {
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .carousel .carousel-control {
+            height: 44px;
+            width: 44px;
+            background: none;
+            margin: auto 0;
+            border-radius: 50%;
+            border: 3px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel .carousel-control i {
+            font-size: 36px;
+            position: absolute;
+            top: 50%;
+            display: inline-block;
+            margin: -19px 0 0 0;
+            z-index: 5;
+            left: 0;
+            right: 0;
+            color: rgba(0, 0, 0, 0.8);
+            text-shadow: none;
+            font-weight: bold;
+        }
+
+        .carousel .carousel-control.left i {
+            margin-left: -3px;
+        }
+
+        .carousel .carousel-control.right i {
+            margin-right: -3px;
+        }
+
+        .carousel .carousel-indicators {
+            bottom: -50px;
+        }
+
+        .carousel-indicators li,
+        .carousel-indicators li.active {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 4px;
+            border-color: transparent;
+        }
+
+        .carousel-indicators li {
+            background: #ababab;
+        }
+
+        .carousel-indicators li.active {
+            background: #555;
+        }
     </style>
 </head>
 
@@ -126,7 +147,7 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background-image: url('assets/img/header-bg.jpg')">
+    <header class="masthead" style="background-image: url('assets/img/header-bg.jpg');">
         <div class="container">
             <div class="intro-text">
                 <div class="row">
@@ -192,143 +213,170 @@
                 <div class="row">
                     <div class="col-md-16 col-center">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                        <!-- Carousel indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>   
-                        <!-- Wrapper for carousel items -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/london.png" class="img-responsive" alt="">
+                            <!-- Carousel indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+                            <!-- Wrapper for carousel items -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/london.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>London</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu
+                                                        sem tempor, varius quam.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="thumb-content">
-                                                <h4>London</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/new-york.png"
+                                                        class="img-responsive" alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>New York</h4>
+                                                    <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio
+                                                        in fringilla vivamus.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/paris.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Paris</h4>
+                                                    <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit
+                                                        purus adipiscing dolor.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/new-york.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/kuala-lumpur.png"
+                                                        class="img-responsive" alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Kuala Lumpur</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu
+                                                        sem tempor, varius quam.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="thumb-content">
-                                                <h4>New York</h4>
-                                                <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio in fringilla vivamus.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
                                         </div>
-                                    </div>				
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/paris.png" class="img-responsive" alt="">
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/agra.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Agra</h4>
+                                                    <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio
+                                                        in fringilla vivamus.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="thumb-content">
-                                                <h4>Paris</h4>
-                                                <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit purus adipiscing dolor.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>					
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/dubai.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Dubai</h4>
+                                                    <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit
+                                                        purus adipiscing dolor.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/rio-de-janeiro.png"
+                                                        class="img-responsive" alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Rio De Janeiro</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu
+                                                        sem tempor, varius quam.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/giza.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Giza</h4>
+                                                    <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio
+                                                        in fringilla vivamus.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="thumb-wrapper">
+                                                <div class="img-box">
+                                                    <img src="/examples/images/cities/sydney.png" class="img-responsive"
+                                                        alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                    <h4>Sydney</h4>
+                                                    <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit
+                                                        purus adipiscing dolor.</p>
+                                                    <a href="#" class="btn btn-primary">More <i
+                                                            class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/kuala-lumpur.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Kuala Lumpur</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/agra.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Agra</h4>
-                                                <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio in fringilla vivamus.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/dubai.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Dubai</h4>
-                                                <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit purus adipiscing dolor.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>					
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/rio-de-janeiro.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Rio De Janeiro</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/giza.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Giza</h4>
-                                                <p>Vivamus fermentum in arcu in aliquam. Quisque aliqua porta odio in fringilla vivamus.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="thumb-wrapper">
-                                            <div class="img-box">
-                                                <img src="/examples/images/cities/sydney.png" class="img-responsive" alt="">
-                                            </div>
-                                            <div class="thumb-content">
-                                                <h4>Sydney</h4>
-                                                <p>Convallis eget pretium eu, bibendum non leo. Proin susc ipit purus adipiscing dolor.</p>
-                                                <a href="#" class="btn btn-primary">More <i class="fa fa-angle-right"></i></a>
-                                            </div>						
-                                        </div>					
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Carousel controls -->
+                            <a class="carousel-control left" href="#myCarousel" data-bs-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="carousel-control right" href="#myCarousel" data-bs-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         </div>
-                        <!-- Carousel controls -->
-                        <a class="carousel-control left" href="#myCarousel" data-bs-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="carousel-control right" href="#myCarousel" data-bs-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
                     </div>
                 </div>
             </div>
