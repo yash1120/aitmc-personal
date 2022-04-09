@@ -7,63 +7,71 @@ from werkzeug.security import generate_password_hash, check_password_hash
 auth = Blueprint("auth", __name__)
 
 
-@auth.route("/login", methods=['GET', 'POST'])
+@auth.route("/login", methods = ["GET", "POST"])
 def login():
-    if request.method == 'POST':
-        email = request.form.get("email")
-        password = request.form.get("password")
+    if request.method == "POST":
+        form = request.form
+        email = form["email"]
+        password = form["password"]
+
+        if not '@' in email:
+            user = User.query.filter_by(username=email).first()
+
+            if not user:
+                return render_template("login.html", error = "User doesn't exist!",user=current_user)
+
+            if check_password_hash(user.password, password):
+                login_user(user)
+                return redirect(url_for('views.blogs',user=current_user))
+            else:
+                return render_template("login.html", error = "Incorrect password!", email = email,user=current_user)
 
         user = User.query.filter_by(email=email).first()
-        if user:
-            if check_password_hash(user.password, password):
-                flash("Logged in!", category='success')
-                login_user(user, remember=True)
-                return redirect(url_for('views.home'))
-            else:
-                flash('Password is incorrect.', category='error')
+
+        if not user:
+            return render_template("login.html", error = "User doesn't exist!",user=current_user)
+
+        if check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for('views.blogs',user=current_user))
         else:
-            flash('Email does not exist.', category='error')
+            return render_template("login.html", error = "Incorrect password!", email = email)
+    return render_template("login.html",user=current_user)
 
-    return render_template("login.html", user=current_user)
 
+@auth.route('/register', methods = ["GET", "POST"])
+def register():
+	if request.method == "POST":
+		form = request.form
+		username = form["username"]
+		email = form["email"]
+		password = form["password"]
 
-@auth.route("/sign-up", methods=['GET', 'POST'])
-def sign_up():
-    if request.method == 'POST':
-        email = request.form.get("email")
-        username = request.form.get("username")
-        password1 = request.form.get("password1")
-        password2 = request.form.get("password2")
+		if not '@' in email:
+			return render_template("register.html", error = "Invalid Email!", email = email, username = username, password = password)
 
-        email_exists = User.query.filter_by(email=email).first()
-        username_exists = User.query.filter_by(username=username).first()
+		temp1 = User.query.filter_by(username=username).first()
+		if temp1:
+			return render_template("register.html", error = "Username already in use!", error1 = True, email = email, password = password)
+		
 
-        if email_exists:
-            flash('Email is already in use.', category='error')
-        elif username_exists:
-            flash('Username is already in use.', category='error')
-        elif password1 != password2:
-            flash('Password don\'t match!', category='error')
-        elif len(username) < 2:
-            flash('Username is too short.', category='error')
-        elif len(password1) < 6:
-            flash('Password is too short.', category='error')
-        elif len(email) < 4:
-            flash("Email is invalid.", category='error')
-        else:
-            new_user = User(email=email, username=username, password=generate_password_hash(
-                password1, method='sha256'))
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user, remember=True)
-            flash('User created!')
-            return redirect(url_for('views.home'))
+		temp2 = User.query.filter_by(email=email).first()
+		if temp2:
+			return render_template("register.html", error = "Email already in use!", error2 = True, username = username, password = password)
 
-    return render_template("signup.html", user=current_user)
+		user = User(username = username, email = email, password = generate_password_hash(password, method='sha256'))
+		db.session.add(user)
+		db.session.commit()
+
+		login_user(user)
+		return redirect(url_for('views.blogs',user=current_user))
+		
+	elif request.method == "GET":
+		return render_template("register.html",user=current_user)
 
 
 @auth.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("views.home"))
+    return redirect(url_for("views.home",user=current_user))

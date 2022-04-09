@@ -1,28 +1,30 @@
 {% extends "base.html" %} {% block css %}
 <style>
 
-    .below_nav{
+  .below_nav {
     width: 100%;
 
-      padding-left: 20px;
-      padding-right: 20px;
-      overflow-y: scroll;
-      padding-bottom: 80px;
-      padding-top: 15%;
-    }
-    .link{
-     text-align: center;
-    }
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+    padding-top: 10%;
 
-    .alert{
-      width: 100%;
-      padding: 6px 12px;
-      margin-bottom: 0px;
+  }
+
+  .link {
+    text-align: center;
+  }
+
+  .alert {
+    width: 100%;
+    padding: 6px 12px;
+    margin-bottom: 0px;
 
 
-    }
+  }
 
-    .below_nav::-webkit-scrollbar {
+  .below_nav::-webkit-scrollbar {
     width: 10px;
   }
 
@@ -37,22 +39,45 @@
     border-radius: 100px;
   }
 
-    body {
+  body {
     background-color: #e8eceb;
   }
 
-  .login_button, .login_button:hover {
-  background: #1f2a35;
-  color: #fff;
-  box-shadow:none;
+  .signup_button,
+  .signup_button:hover {
+    background: #1f2a35;
+    color: #fff;
+    box-shadow: none;
   }
 
-    {% if email %}
-    .password:focus {
-        border-color:   #FFC1C1;
-        box-shadow: 0 0 0 0.2rem rgb(255,193,193);;
-    }
-    {% endif %}
+    {
+    % if error1 %
+  }
+
+  .username:focus,
+  .email:focus,
+  .password:focus {
+    border-color: #FFC1C1;
+    box-shadow: 0 0 0 0.2rem rgb(255, 193, 193);
+  }
+
+    {
+    % endif %
+  }
+
+    {
+    % if error2 %
+  }
+
+  .email:focus,
+  .password:focus {
+    border-color: #FFC1C1;
+    box-shadow: 0 0 0 0.2rem rgb(255, 193, 193);
+  }
+
+    {
+    % endif %
+  }
 </style>
 {% endblock %} {% block content %}
 <div class="below_nav" style="position: fixed; min-height: 100%; height: 100%">
@@ -70,7 +95,7 @@
             border-radius: 10px;
           "
         >
-          <h1>Login</h1>
+          <h1>Sign Up</h1>
           <br />
 
           <!---
@@ -81,45 +106,84 @@
 
           <form
             class="row g-3 needs-validation"
-            name="login_user_form"
+            name="register_user_form"
             method="POST"
-            action="/login"
+            action="/register"
           >
             {% if error %}
             <div class="alert alert-danger" role="alert">{{error}}</div>
 
             {% endif %}
             <input
-              class="form-control"
+              class="form-control username"
               type="text"
-              placeholder="Username or email"
+              placeholder="Username"
+              aria-label="default input example"
+              required
+              name="username"
+              {%
+              if
+              username
+              %}
+              value="{{username}}"
+              {%
+              endif
+              %}
+              {%
+              if
+              error1
+              %}
+              autofocus{%
+              endif
+              %}
+            />
+            <input
+              class="form-control email"
+              type="text"
+              placeholder="Email"
               aria-label="default input example"
               required
               name="email"
-              value="{% if email %}{{email}}{% endif %}"
+              {%
+              if
+              email
+              %}
+              value="{{email}}"
+              {%
+              endif
+              %}
+              {%
+              if
+              error2
+              %}
+              autofocus{%
+              endif
+              %}
             />
             <input
               class="form-control password"
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder="Create Password"
               aria-label="default input example"
               required
               name="password"
               {%
               if
-              email
-              %}autofocus{%
+              password
+              %}
+              value="{{password}}"
+              {%
               endif
               %}
             />
-            <button class="btn btn-dark login_button" type="submit">
-              Login
+            <button class="btn btn-dark signup_button" type="submit">
+              Sign Up
             </button>
           </form>
           <div class="link">
             <br />
-            <a href="/register">New User?</a>
+            <a href="/login">Already a User?</a>
           </div>
         </div>
       </div>
@@ -131,4 +195,5 @@
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
   crossorigin="anonymous"
 ></script>
+
 {% endblock %}

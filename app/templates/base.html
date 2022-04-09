@@ -28,6 +28,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    {% block css %}{% endblock %}
   </head>
   <header
     id="page-top"
@@ -40,7 +41,7 @@
       id="mainNav"
     >
       <div class="container">
-        <a class="navbar-brand" href="#page-top">Preet Sandhuu</a
+        <a class="navbar-brand" href="/#page-top">Preet Sandhuu</a
         ><button
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
@@ -54,17 +55,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto text-uppercase">
-            <li class="nav-item"><a class="nav-link" href="#bio">Bio</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#bio">Bio</a></li>
             <li class="nav-item">
               <a class="nav-link" href="/blogs">Blogs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+            <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
             <li class="nav-item"><a class="nav-link" href="/team">Team</a></li>
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact</a>
             </li>
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="/logout">Logout</a>
+              {% else %}
+              <a class="nav-item nav-link" href="/login">Login/register</a>
+              {% endif %}
+            </li>
+
           </ul>
         </div>
       </div>
