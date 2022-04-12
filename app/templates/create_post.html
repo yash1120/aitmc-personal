@@ -1,25 +1,55 @@
-{% extends "base.html" %}{% block content %}
+{% extends "base.html" %}
+{% block css %}
+<link href="../static/bootstrap/css/font_awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../static/bootstrap/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+{% endblock %}{% block content %}
 <section class="bg-light" id="create-blog">
   <div class="container">
     <div class="row">
       <h1 align="center">Make a Post</h1>
+      <br>
+      <div>
 
-      <form method="POST">
-        <textarea name="text" id="text" class="form-control"></textarea>
-        <br />
+        <form method="POST" enctype="multipart/form-data" >
+          <div class="row">
+            <b>Title: <textarea class="form-control" name="title" id="title" rows="2" cols="1"></textarea></b>
+          </div>
+          <br>
+          <div class="row">
+          <b>Cover Photo: <input type="file" name="file"></b>
+            
+
+          </div>
+          <br />
+          <textarea name="myTextarea" id="myTextarea"></textarea>
+          <div class="row"></div>
+          <br>
+          <div align="center">
+            <button type="submit" class="btn btn-lg btn-primary">Post</button>
+            <a href="/home"><button type="button" class="btn btn-lg btn-secondary">
+              Back
+            </button></a>
+          </div>
+        </form>
         <div align="center">
-          <button type="submit" class="btn btn-lg btn-primary">Post</button>
+
         </div>
-      </form>
-      <br />
-      <div align="center">
-        <a href="/home"
-          ><button type="button" class="btn btn-lg btn-secondary">
-            Back
-          </button></a
-        >
       </div>
     </div>
-  </div>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src='..\static\bootstrap\js\tinymce\tinymce.min.js'></script>
+    <script>
+      tinymce.init({
+    selector: '#myTextarea'
+});
+    </script>
+    <script>tinymce.init({
+      selector: '#myTextarea',
+      width: 600,
+      height: 300
+  });</script>
 </section>
 {% endblock %}

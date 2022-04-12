@@ -1,4 +1,5 @@
-
+from io import BytesIO
+import base64
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from matplotlib.backend_bases import RendererBase
@@ -8,6 +9,10 @@ from . import db
 views = Blueprint("views", __name__)
 
 
+def render_picture(data):
+    
+    render_pic = base64.b64encode(data).decode('ascii') 
+    return render_pic
 @views.route("/")
 @views.route("/home")
 def home():
@@ -15,45 +20,52 @@ def home():
     return render_template("index.html", user=current_user, posts=posts)
 
 
-@views.route("/blogs", methods =['GET','POST'])
+@views.route("/blogs", methods=['GET', 'POST'])
 def blogs():
-    if request.method == "POST":
-        pass
-    return render_template('blogs.html', user=current_user)
-@views.route("/about",methods=['GET','POST'])
+    posts = Post.query.all()
+    return render_template('blogs.html', user=current_user, posts=posts)
+
+
+@views.route("/about", methods=['GET', 'POST'])
 def about():
     if request.method == "POST":
         pass
-    return render_template("about.html",user=current_user)
+    return render_template("about.html", user=current_user)
+
 
 @views.route("/team")
 def team():
-    return render_template("team.html",user=current_user)
+    return render_template("team.html", user=current_user)
+
 
 @views.route('/contact')
 def contact():
-    return render_template("contact.html",user=current_user)
+    return render_template("contact.html", user=current_user)
 
-@views.route('/gallery',methods=['GET','POST'])
+
+@views.route('/gallery', methods=['GET', 'POST'])
 def gallery():
-    return render_template('gallery.html',user=current_user)
-
+    return render_template('gallery.html', user=current_user)
 
 
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
 def create_post():
     if request.method == "POST":
-        text = request.form.get('text')
-
-        if not text:
+        title = request.form.get('title')
+        text = request.form.get('myTextarea')
+        image = request.files["file"]
+        data = image.read()
+        render_file = render_picture(data)
+        if not text or not title:
             flash('Post cannot be empty', category='error')
+
         else:
-            post = Post(text=text, author=current_user.id)
-            db.session.add(post)
+            upload = Post(title=title, text=text,
+                          image=data,rendered_image=render_file, author=current_user.id)
+            db.session.add(upload)
             db.session.commit()
-            flash('Post created!', category='success')
-            return redirect(url_for('views.home',user=current_user))
+        return redirect(url_for('views.blogs', user=current_user))
 
     return render_template('create_post.html', user=current_user)
 
@@ -72,7 +84,7 @@ def delete_post(id):
         db.session.commit()
         flash('Post deleted.', category='success')
 
-    return redirect(url_for('views.home',user=current_user))
+    return redirect(url_for('views.home', user=current_user))
 
 
 @views.route("/posts/<username>")
@@ -82,7 +94,7 @@ def posts(username):
 
     if not user:
         flash('No user with that username exists.', category='error')
-        return redirect(url_for('views.home',user=current_user))
+        return redirect(url_for('views.home', user=current_user))
 
     posts = user.posts
     return render_template("posts.html", user=current_user, posts=posts, username=username)
@@ -105,7 +117,7 @@ def create_comment(post_id):
         else:
             flash('Post does not exist.', category='error')
 
-    return redirect(url_for('views.home',user=current_user))
+    return redirect(url_for('views.home', user=current_user))
 
 
 @views.route("/delete-comment/<comment_id>")
@@ -121,7 +133,7 @@ def delete_comment(comment_id):
         db.session.delete(comment)
         db.session.commit()
 
-    return redirect(url_for('views.home',user=current_user))
+    return redirect(url_for('views.home', user=current_user))
 
 
 @views.route("/like-post/<post_id>", methods=['POST'])

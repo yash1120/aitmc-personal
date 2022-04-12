@@ -1,4 +1,6 @@
 {% extends "base.html" %} {% block content %}
+<br><br><br><br>
+
 <section class="bg-light" id="portfolio">
   <div class="container">
     <div class="row">
@@ -20,7 +22,7 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+              <img src="data:;base64,{{posts[0].rendered_image}}" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -43,7 +45,7 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
+              <img src="data:;base64,{{posts[1].rendered_image}}" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -66,7 +68,7 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+              <img src="data:;base64,{{posts[0].rendered_image}}class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
