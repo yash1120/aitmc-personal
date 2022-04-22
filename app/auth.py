@@ -48,16 +48,16 @@ def register():
 		password = form["password"]
 
 		if not '@' in email:
-			return render_template("register.html", error = "Invalid Email!", email = email, username = username, password = password)
+			return render_template("register.html", error = "Invalid Email!", email = email, username = username, password = password,user=current_user)
 
 		temp1 = User.query.filter_by(username=username).first()
 		if temp1:
-			return render_template("register.html", error = "Username already in use!", error1 = True, email = email, password = password)
+			return render_template("register.html", error = "Username already in use!", error1 = True, email = email, password = password,user=current_user)
 		
 
 		temp2 = User.query.filter_by(email=email).first()
 		if temp2:
-			return render_template("register.html", error = "Email already in use!", error2 = True, username = username, password = password)
+			return render_template("register.html", error = "Email already in use!", error2 = True, username = username, password = password,user=current_user)
 
 		user = User(username = username, email = email, password = generate_password_hash(password, method='sha256'))
 		db.session.add(user)

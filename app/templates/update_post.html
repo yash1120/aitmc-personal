@@ -9,22 +9,23 @@
       <h1 align="center">Make a Post</h1>
       <br>
       <div>
+
         <form method="POST" enctype="multipart/form-data" >
           <div class="row">
-            <b>Title: <textarea class="form-control" name="title" id="title" rows="2" cols="1" required></textarea></b>
+            <b>Title: <textarea class="form-control" name="update_title" id="update_title" rows="2" cols="1" required >{{post.title}}</textarea></b>
           </div>
           <br>
           <div class="row">
-            <b>Summary: <textarea class="form-control" name="summary" id="summary" rows="2" cols="1" required></textarea></b>
+            <b>Summary: <textarea class="form-control" name="update_summary" id="update_summary" rows="2" cols="1" required>{{post.summary}}</textarea></b>
           </div>
           <br>
           <div class="row">
-          <b>Cover Photo: <input type="file" name="file" required></b>
+          <b>Cover Photo: <input type="file" name="file" ></b>
             
 
           </div>
           <br />
-          <textarea name="myTextarea" id="myTextarea" ></textarea>
+          <textarea name="update_myTextarea" id="myTextarea" required>{{post.text}}</textarea>
           <div class="row"></div>
           <br>
           <div align="center">
@@ -35,6 +36,7 @@
           </div>
         </form>
         <div align="center">
+
         </div>
       </div>
     </div>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="bg-light" id="team">
+    <div class="container">
+        <div class="row">
+            <h1 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-transform:uppercase">{{post.title}}</h1>
+            <br><br><br>
+            <div class="conatiner">
+                <div class="row">
+                    {{post.text | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -7,6 +7,38 @@
 />
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <style>
+  /* Parent Container */
+  .content_img {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+  }
+
+  /* Child Text Container */
+  .content_img div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    color: white;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+
+  /* Hover on Parent Container */
+  .content_img:hover {
+    cursor: pointer;
+  }
+
+  .content_img:hover div {
+    padding: 8px 15px;
+    visibility: visible;
+    opacity: 0.7;
+  }
   body {
     background-color: #1d1d1d !important;
     font-family: "Asap", sans-serif;
@@ -44,10 +76,10 @@
   }
 
   .transition {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
   }
   .modal-header {
     border-bottom: none;
@@ -78,122 +110,95 @@
 </script>
 {% endblock %} {% block content %}
 <section id="gallery">
+  {% if user.is_authenticated and id.id==1 %}
   <div class="container">
-    <a href="/add-photo" class="btn btn-primary">ADD PHOTO +</a>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModalCenter"
+    >
+      Add photo+
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="border-radius: 10px">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">
+              Add a Photo
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form
+              class="row g-3 needs-validation"
+              id="new_photo"
+              name="new_deck"
+              method="POST"
+              action="/gallery"
+              enctype="multipart/form-data"
+            >
+              <input
+                class="form-control"
+                type="file"
+                placeholder=""
+                aria-label="default input example"
+                required
+                name="photo"
+              />
+              <textarea class="form-control" name="captions" id="captions" rows="2" cols="1" required></textarea>
+            </form>
+            <br />
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-dark"
+              name="photo"
+              type="submit"
+              form="new_photo"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <br>
+  {% endif %}
+  <br />
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+      {% for image in images %}
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb content_img">
         <a
-          href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+          href="data:;base64,{{image.rendered_image}}"
           class="fancybox"
           rel="ligthbox"
         >
           <img
-            src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+            src="data:;base64,{{image.rendered_image}}"
             class="zoom img-fluid"
             alt=""
           />
+          <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa nihil quis cumque sint cum accusantium unde</div>
         </a>
+        
       </div>
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <a
-          href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          class="fancybox"
-          rel="ligthbox"
-        >
-          <img
-            src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="zoom img-fluid"
-            alt=""
-          />
-        </a>
-      </div>
+      {% endfor %}
     </div>
   </div>
   <!-- Container -->
