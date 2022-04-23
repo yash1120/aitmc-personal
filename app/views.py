@@ -66,7 +66,8 @@ def gallery():
             db.session.add(upload)
             db.session.commit()
     images = Photos.query.all()
-    return render_template('gallery.html', user=current_user, images=images)
+    id=User.query.filter_by(id='1').first()
+    return render_template('gallery.html', user=current_user, images=images,id=id)
 
 
 @views.route("/create-post", methods=['GET', 'POST'])

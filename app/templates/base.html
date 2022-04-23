@@ -28,6 +28,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block css %}{% endblock %}
   </head>
   <header
@@ -62,7 +63,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact</a>
             </li>
@@ -70,10 +73,15 @@
               {% if user.is_authenticated %}
               <a class="nav-item nav-link" href="/logout">Logout</a>
               {% else %}
-              <a class="nav-item nav-link" href="/login">Login/register</a>
+              <a class="nav-item nav-link" href="/login">Login</a>
               {% endif %}
             </li>
-
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="/edit_profile">Edit profile</a>
+            </li>
+            {% endif %}
+            
           </ul>
         </div>
       </div>
@@ -88,7 +96,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <span class="copyright">Copyright&nbsp;© Brand 2022</span>
         </div>
         <div class="col-md-4">
           <ul class="list-inline social-buttons">
@@ -96,17 +103,11 @@
               <a href="#"><i class="fa fa-twitter"></i></a>
             </li>
             <li class="list-inline-item">
-              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/preetsandhuu1106/?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fa fa-instagram"></i></a>
             </li>
             <li class="list-inline-item">
-              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/preetsandhuu/" target="_blank"><i class="fa fa-linkedin"></i></a>
             </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-            <li class="list-inline-item"><a href="#">Terms of Use</a></li>
           </ul>
         </div>
       </div>
